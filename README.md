@@ -26,6 +26,18 @@ python3 -m checkup_engine https://example.com --lang zh --out report.html --json
 
 Python 3.10+, **stdlib only** — nothing to `pip install` to run the engine or the VM service.
 
+
+## Live Demo status (early stage)
+
+| Piece | URL / note |
+|---|---|
+| Engine health | https://llm.agentbay.asia/checkup/health |
+| Worker API (preview) | https://talentos-checkup-demo.jimmywangjimmy.workers.dev |
+| Site Demo pages | `/demo/` and `/en/demo/` on www.agentbay.asia — **not published to gh-pages until Reed confirms** |
+| Turnstile | Preview still uses Cloudflare **test keys** (always pass). Real site+secret keys: wait for `/workspace/secrets/turnstile-checkup.env` from Relay, then wire Site Key into the Astro demo pages and Secret into the Worker. |
+
+Honest limits: site-wide **12 runs/day**, **3 per IP/day**, gateway budget **$1/day** (resets 08:00 Beijing). Expect rough edges; scores are reproducible, recommendations are estimates.
+
 ## Architecture (Demo)
 
 ```

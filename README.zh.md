@@ -21,6 +21,15 @@ python3 -m checkup_engine https://example.com --lang zh --offline --out report.h
 
 公开 Demo 限额：全站 **12 次/天**，每 IP **3 次/天**（北京时间 08:00 重置）。
 
+## 线上状态（早期）
+
+- 健康检查：https://llm.agentbay.asia/checkup/health
+- Worker 预览：https://talentos-checkup-demo.jimmywangjimmy.workers.dev
+- 站点 `/demo/`：**等 Reed 确认后再发 gh-pages**
+- Turnstile：预览仍用测试密钥；正式密钥到位后（`/workspace/secrets/turnstile-checkup.env`）再换
+
+全站 12 次/天，每 IP 3 次/天，网关预算 $1/天。
+
 ## 许可
 
 MIT © 2026 TalentOS
