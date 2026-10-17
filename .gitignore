@@ -31,3 +31,4 @@ worker/dist/
 # Optional: keep sample reports but not huge raw HTML dumps
 samples/**/raw/
 .ruff_cache/
+worker/package-lock.json
