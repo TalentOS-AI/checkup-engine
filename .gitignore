@@ -1,0 +1,33 @@
+# Secrets — never commit
+.env
+*.env
+!.env.example
+!**/*.env.example
+secrets/
+**/secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+
+# Node (Worker)
+worker/node_modules/
+worker/.wrangler/
+worker/dist/
+
+# Local runtime
+/var/
+*.html.bak
+.DS_Store
+
+# Optional: keep sample reports but not huge raw HTML dumps
+samples/**/raw/
+.ruff_cache/

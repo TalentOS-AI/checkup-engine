@@ -1,0 +1,25 @@
+title = "checkup-engine"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "gateway-checkup-key"
+description = "TalentOS gateway checkup API key assignment with a long value"
+regex = '''GATEWAY_CHECKUP_KEY\s*=\s*['\"]?[A-Za-z0-9_\-]{24,}'''
+tags = ["key", "talentos"]
+
+[[rules]]
+id = "checkup-service-token"
+description = "Checkup service shared token assignment with a long value"
+regex = '''CHECKUP_SERVICE_TOKEN\s*=\s*['\"]?[A-Za-z0-9_\-]{24,}'''
+tags = ["key", "talentos"]
+
+[allowlist]
+description = "examples and docs"
+paths = [
+  '''(^|/)service/env\.example$''',
+  '''(^|/)docs/''',
+  '''(^|/)README''',
+  '''(^|/)worker/wrangler\.toml$''',
+]

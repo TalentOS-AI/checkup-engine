@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/TalentOS-AI/checkup-engine/report_schema.json",
+  "title": "TalentOS checkup report",
+  "type": "object",
+  "required": ["schema_version", "engine_version", "rubric_version", "url", "final_url", "lang", "generated_at",
+               "mode", "summary", "scores", "recommendations", "collection", "qa", "cost", "disclaimer"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "engine_version": {"type": "string"},
+    "rubric_version": {"type": "string"},
+    "url": {"type": "string"},
+    "final_url": {"type": "string"},
+    "lang": {"enum": ["zh", "en"]},
+    "generated_at": {"type": "string"},
+    "mode": {"enum": ["llm", "offline"]},
+    "business_summary": {"type": "string"},
+    "summary": {"type": "string"},
+    "scores": {
+      "type": "object",
+      "required": ["overall", "dimensions"],
+      "properties": {
+        "overall": {"type": "integer", "minimum": 0, "maximum": 100},
+        "dimensions": {
+          "type": "array", "minItems": 5, "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["id", "label_en", "label_zh", "score", "checks"],
+            "properties": {
+              "id": {"type": "string"},
+              "score": {"type": "integer", "minimum": 0, "maximum": 100},
+              "checks": {"type": "array", "items": {"type": "object",
+                "required": ["id", "weight", "passed", "evidence_url", "detail"]}}
+            }
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array", "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["title", "why", "how_ai_helps", "evidence_url", "source"],
+        "properties": {
+          "title": {"type": "string"}, "why": {"type": "string"}, "how_ai_helps": {"type": "string"},
+          "evidence_url": {"type": "string"}, "related_check": {"type": ["string", "null"]},
+          "est_hours_saved_per_month": {"type": ["number", "null"]},
+          "source": {"enum": ["llm", "rubric"]}
+        }
+      }
+    },
+    "collection": {"type": "object", "required": ["pages", "notes", "elapsed_ms"]},
+    "qa": {"type": "object", "required": ["checked", "dropped"]},
+    "cost": {"type": "object", "required": ["llm_calls", "prompt_tokens", "completion_tokens", "est_cost_usd"]},
+    "disclaimer": {"type": "string"}
+  }
+}

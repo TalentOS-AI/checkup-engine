@@ -1,0 +1,23 @@
+name = "talentos-checkup-demo"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Create a dedicated KV namespace for this worker (do not reuse callback-api's).
+#   npx wrangler kv namespace create CHECKUP_KV
+# then paste the id below.
+[[kv_namespaces]]
+binding = "CHECKUP_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+DAILY_IP_LIMIT = "3"
+DAILY_GLOBAL_LIMIT = "12"
+# Cloudflare Turnstile TEST sitekey (always passes). Replace before production.
+TURNSTILE_SITEKEY = "1x00000000000000000000AA"
+# CHECKUP_BACKEND = "https://llm.agentbay.asia/checkup"
+# Secrets (set via `wrangler secret put`, never commit):
+#   TURNSTILE_SECRET   (test: 1x0000000000000000000000000000000AA)
+#   CHECKUP_SERVICE_TOKEN
+#   CHECKUP_BACKEND

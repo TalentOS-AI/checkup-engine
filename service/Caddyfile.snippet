@@ -1,0 +1,17 @@
+# Additive route for llm.agentbay.asia (or the gateway Caddy site that already
+# terminates TLS). Paste inside the existing site block. Do NOT replace DNS,
+# root A, or other site handlers. Services listen on localhost only.
+#
+# handle_path strips the /checkup prefix before proxying, so the Python server
+# sees /jobs, /jobs/{id}, /report/{id}, /health.
+#
+#    handle_path /checkup/* {
+#        reverse_proxy 127.0.0.1:8790
+#    }
+#
+# Prefer handle_path over handle so the Worker can call
+# https://llm.agentbay.asia/checkup/jobs without the Python portal seeing /checkup.
+
+handle_path /checkup/* {
+	reverse_proxy 127.0.0.1:8790
+}

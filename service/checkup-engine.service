@@ -1,0 +1,35 @@
+[Unit]
+Description=TalentOS checkup-engine (localhost job server)
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=checkup
+Group=checkup
+WorkingDirectory=/opt/checkup-engine
+EnvironmentFile=-/etc/checkup-engine/env
+Environment=CHECKUP_BIND=127.0.0.1
+Environment=CHECKUP_PORT=8790
+Environment=CHECKUP_DATA_DIR=/var/lib/checkup-engine
+Environment=CHECKUP_DAILY_BUDGET_USD=1.0
+Environment=CHECKUP_WORKERS=2
+ExecStart=/usr/bin/python3 /opt/checkup-engine/service/server.py
+Restart=on-failure
+RestartSec=3
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/checkup-engine
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictRealtime=true
+LockPersonality=true
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target
