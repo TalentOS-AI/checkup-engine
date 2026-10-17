@@ -8,8 +8,8 @@ workers_dev = true
 # then paste the id below.
 [[kv_namespaces]]
 binding = "CHECKUP_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
-preview_id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "e1ad30434869484285a2b7dec318f9fb"
+preview_id = "e1ad30434869484285a2b7dec318f9fb"
 
 [vars]
 DAILY_IP_LIMIT = "3"
